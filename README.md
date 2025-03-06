@@ -1,2 +1,2 @@
 # MiCLSAO
- 
+ python main.py
