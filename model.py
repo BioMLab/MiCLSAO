@@ -167,19 +167,17 @@ class MVCCL(nn.Module):
         node_prob_c = self.translator(x_c, edge_index_c, edge_weight_c, batch_c)
 
     
-        # 应用交叉注意力机制
         y_a = self.cross_attention(y_a, y_b, y_c) 
         y_b = self.cross_attention(y_b, y_c, y_a)
         y_c = self.cross_attention(y_c, y_a, y_b) 
 
-        # 应用投影层
         y_a = self.project(y_a)
         y_b = self.project(y_b)
         y_c = self.project(y_c)
         lncRNA_emb_all = torch.cat([y_a, y_b, y_c], dim=1)  
         return lncRNA_emb_all
 
-class LncRNA_GO_End2End(nn.Module):
+class LncRNA_GO(nn.Module):
 
     def __init__(self, 
                  lnc_mvccl_model: MVCCL,
