@@ -5,7 +5,6 @@ import logging
 from argument import arg_parse
 
 args = arg_parse()
-feature = args.GO
 id_file = args.id
 relation_file = args.relation
 ic_file = args.ic
